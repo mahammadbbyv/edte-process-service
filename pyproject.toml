@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "edte-process-service"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.115,<1", "uvicorn>=0.30,<1", "neo4j>=5.25,<6",
+    "pydantic>=2.10,<3", "pydantic-settings>=2.6,<3", "pyarrow>=18",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "pytest-asyncio", "pytest-cov", "testcontainers[neo4j]>=4.8,<5",
+       "httpx>=0.27,<0.29", "ruff", "mypy>=1.12"]
+
+[tool.setuptools.packages.find]
+include = ["src*"]
+
+[tool.setuptools.data-files]
+"share/edte-process-service" = ["schema/constraints.cypher"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+plugins = ["pydantic.mypy"]
+
+[[tool.mypy.overrides]]
+module = ["pyarrow", "pyarrow.*"]
+ignore_missing_imports = true
+
+[tool.ruff]
+line-length = 100
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["integration: runs against a real Neo4j database in Docker"]

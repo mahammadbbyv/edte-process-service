@@ -1,0 +1,6 @@
+trace_id,timestamp,actor_urn,system_urn,action,resource_urn,duration_ms
+tx_9801,2026-11-18T12:00:01.640Z,urn:actor:intern_bob,urn:system:billing_db,READ,urn:resource:billing_db:table:invoices,12
+tx_9802,2026-11-18T12:00:00.020Z,urn:actor:service,urn:system:billing_db,READ,urn:resource:billing_db:table:invoices,9
+tx_9801,2026-11-18T12:00:00.000Z,urn:actor:intern_bob,urn:system:billing_db,READ,urn:resource:billing_db:table:invoices,10
+tx_9802,2026-11-18T12:00:00.045Z,urn:actor:service,urn:system:billing_db,WRITE,urn:resource:billing_db:table:invoices,5
+tx_9801,2026-11-18T12:00:00.040Z,urn:actor:intern_bob,urn:system:billing_db,WRITE,urn:resource:billing_db:table:invoices,30
