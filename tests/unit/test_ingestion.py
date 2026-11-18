@@ -5,7 +5,14 @@ from pathlib import Path
 from pydantic import ValidationError
 
 from src.models.domain import Event
-from src.services.ingest import LateEvent, TraceState, mutates, plan_steps, read_events, sorted_batches
+from src.services.ingest import (
+    LateEvent,
+    TraceState,
+    mutates,
+    plan_steps,
+    read_events,
+    sorted_batches,
+)
 
 EXAMPLE = Path(__file__).resolve().parents[2] / "examples/events.csv"
 

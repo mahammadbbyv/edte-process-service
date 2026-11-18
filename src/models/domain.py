@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import hashlib
 import json
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from typing import Annotated
 
 from pydantic import AwareDatetime, BaseModel, ConfigDict, Field, field_validator
@@ -29,7 +29,7 @@ class Event(BaseModel):
     def normalize_timestamp(cls, value: datetime) -> datetime:
         if value.microsecond % 1000:
             raise ValueError("timestamp must have at most millisecond precision")
-        return value.astimezone(timezone.utc)
+        return value.astimezone(UTC)
 
     def stamp(self) -> str:
         return self.timestamp.isoformat(timespec="milliseconds")
